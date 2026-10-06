@@ -68,13 +68,3 @@ Icons by Remix Icon
 Slider by Swiper
 Fonts by Google Fonts
 Original project template: Web Design Mastery; redesigned and extended with new features
-📄 License
-
-This project is for learning and portfolio purposes. Replace this section with your preferred license (for example, MIT) before publishing.
-
-Readme
-MD
-Skywings travel agency
-ZIP
-Uploads
-1791315998119_Travel Agency.zip
