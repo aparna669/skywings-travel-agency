@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Skywings – book flights, discover destinations and plan tailored trips around the world."
+    />
+    <meta name="theme-color" content="#2887ff" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Sora:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -11,423 +22,616 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Web Design Mastery | SKYWINGS</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Skywings | Flights, Destinations &amp; Tailored Trips</title>
   </head>
   <body>
-    <nav>
+    <div class="progress" id="progress" aria-hidden="true"></div>
+    <a class="skip" href="#book">Skip to booking</a>
+
+    <!-- NAV -->
+    <nav id="navbar" aria-label="Main">
       <div class="nav__header">
-        <div class="nav__logo">
-          <a href="#" class="logo">Skywings</a>
-        </div>
-        <div class="nav__menu__btn" id="menu-btn">
+        <a href="#home" class="logo">
+          <i class="ri-plane-fill"></i> Skywings
+        </a>
+        <button
+          class="nav__menu__btn"
+          id="menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
           <i class="ri-menu-line"></i>
-        </div>
+        </button>
       </div>
       <ul class="nav__links" id="nav-links">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#tour">TOUR</a></li>
-        <li><a href="#package">PACKAGE</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-        <li><a href="#">BOOK TRIP</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#tour">Tour</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#package">Packages</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="nav__cta-mobile"><a href="#book">Book Trip</a></li>
       </ul>
       <div class="nav__btns">
-        <button class="btn">BOOK TRIP</button>
+        <a href="#book" class="btn btn--dark">Book Trip</a>
       </div>
     </nav>
 
+    <!-- HERO -->
     <header id="home">
       <div class="header__container">
         <div class="header__content">
-          <p>ELEVATE YOUR TRAVEL JOURNEY</p>
-          <h1>Experience The Magic Of Flight!</h1>
+          <span class="eyebrow"><i class="ri-sparkling-2-fill"></i> Elevate your travel journey</span>
+          <h1>Experience the <em>magic</em> of flight!</h1>
+          <p class="header__lead">
+            Flights, stays and hand-crafted itineraries to 120+ destinations —
+            planned in minutes, remembered for a lifetime.
+          </p>
           <div class="header__btns">
-            <button class="btn">Book A Trip Now</button>
-            <a href="#">
-              <span><i class="ri-play-circle-fill"></i></span>
+            <a href="#book" class="btn btn--lg">Book A Trip Now</a>
+            <a href="#tour" class="play" aria-label="See how it works">
+              <span><i class="ri-play-fill"></i></span>
+              <b>How it works</b>
             </a>
           </div>
+          <ul class="header__trust">
+            <li><i class="ri-shield-check-fill"></i> Secure booking</li>
+            <li><i class="ri-customer-service-2-fill"></i> 24/7 support</li>
+            <li><i class="ri-price-tag-3-fill"></i> Best fares</li>
+          </ul>
         </div>
         <div class="header__image">
-          <img src="assets/header.png" alt="header" />
+          <img src="assets/header.png" alt="Passenger jet taking off" />
+          <div class="float-chip float-chip--a">
+            <i class="ri-map-pin-2-fill"></i>
+            <div><b>Paris</b><small>Next flight · 08:45</small></div>
+          </div>
+          <div class="float-chip float-chip--b">
+            <i class="ri-star-fill"></i>
+            <div><b>4.8 / 5</b><small>12K happy travelers</small></div>
+          </div>
         </div>
       </div>
     </header>
 
-    <section class="section__container destination__container" id="about">
-      <h2 class="section__header">Popular Destination</h2>
-      <p class="section__description">
-        Discover the Most Loved Destinations Around the Globe
-      </p>
-      <div class="destination__grid">
-        <div class="destination__card">
-          <img src="assets/destination-1.jpg" alt="destination" />
-          <div class="destination__card__details">
-            <div>
-              <h4>Tradition and Futurism</h4>
-              <p>New York City, USA</p>
-            </div>
-            <div class="destination__rating">
-              <span><i class="ri-star-fill"></i></span>
-              4.7
-            </div>
+    <!-- BOOKING WIDGET -->
+    <section class="book" id="book" aria-labelledby="book-title">
+      <form class="book__card" id="book-form" novalidate>
+        <div class="book__top">
+          <h2 id="book-title">Find your flight</h2>
+          <div class="seg" role="radiogroup" aria-label="Trip type">
+            <label>
+              <input type="radio" name="trip" value="round" checked />
+              <span>Round trip</span>
+            </label>
+            <label>
+              <input type="radio" name="trip" value="oneway" />
+              <span>One way</span>
+            </label>
           </div>
         </div>
-        <div class="destination__card">
-          <img src="assets/destination-2.jpg" alt="destination" />
-          <div class="destination__card__details">
-            <div>
-              <h4>The City of Lights</h4>
-              <p>Paris, France</p>
-            </div>
-            <div class="destination__rating">
-              <span><i class="ri-star-fill"></i></span>
-              4.5
-            </div>
-          </div>
-        </div>
-        <div class="destination__card">
-          <img src="assets/destination-3.jpg" alt="destination" />
-          <div class="destination__card__details">
-            <div>
-              <h4>Island of the Gods</h4>
-              <p>Bali, Indonesia</p>
-            </div>
-            <div class="destination__rating">
-              <span><i class="ri-star-fill"></i></span>
-              4.8
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section__container journey__container" id="tour">
-      <h2 class="section__header">Journey To The Sky Made Simple!</h2>
-      <p class="section__description">
-        Effortless Planning for Your Next Adventure
-      </p>
-      <div class="journey__grid">
-        <div class="journey__card">
-          <div class="journey__card__bg">
-            <span><i class="ri-bookmark-3-line"></i></span>
-            <h4>Seamless Booking Process</h4>
+        <div class="book__grid">
+          <div class="field field--route">
+            <label for="from">From</label>
+            <div class="field__box">
+              <i class="ri-flight-takeoff-line"></i>
+              <input id="from" name="from" list="cities" placeholder="Delhi" value="Delhi" autocomplete="off" required />
+            </div>
+            <small class="field__err" data-err="from"></small>
           </div>
-          <div class="journey__card__content">
-            <span><i class="ri-bookmark-3-line"></i></span>
-            <h4>Easy Reservations, One Click Away</h4>
-            <p>
-              From flights and accommodations to activities and transfers,
-              everything you need is available at your fingertips, making travel
-              planning effortless.
-            </p>
-          </div>
-        </div>
-        <div class="journey__card">
-          <div class="journey__card__bg">
-            <span><i class="ri-landscape-fill"></i></span>
-            <h4>Tailored Itineraries</h4>
-          </div>
-          <div class="journey__card__content">
-            <span><i class="ri-landscape-fill"></i></span>
-            <h4>Customized Plans Just for You</h4>
-            <p>
-              Enjoy personalized travel plans designed to match your preferences
-              and interests. Whether you seek adventure or cultural immersion,
-              our tailored itineraries ensure your journey is uniquely yours.
-            </p>
-          </div>
-        </div>
-        <div class="journey__card">
-          <div class="journey__card__bg">
-            <span><i class="ri-map-2-line"></i></span>
-            <h4>Expert Local Insights</h4>
-          </div>
-          <div class="journey__card__content">
-            <span><i class="ri-map-2-line"></i></span>
-            <h4>Insider Tips and Recommendations</h4>
-            <p>
-              We provide curated recommendations for dining, sightseeing, and
-              hidden gems, so you can experience each destination like a local.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section__container showcase__container" id="package">
-      <div class="showcase__image">
-        <img src="assets/showcase.jpg" alt="showcase" />
-      </div>
-      <div class="showcase__content">
-        <h4>UNLEASH WANDERLUST WITH SKYWINGS</h4>
-        <p>
-          Embark on a journey like no other with Skywings, where your travel
-          dreams come to life. Our mission is to inspire and facilitate your
-          adventures, whether you seek the vibrant energy of bustling
-          cityscapes, the serene beauty of pristine beaches, or the captivating
-          history of ancient landmarks. At Skywings, we provide expertly curated
-          destinations and personalized itineraries, ensuring that every trip is
-          tailored to your unique preferences. Discover hidden gems, immerse
-          yourself in diverse cultures, and create unforgettable memories that
-          will last a lifetime.
-        </p>
-        <p>
-          With Skywings as your ultimate travel companion, exploring the wonders
-          of the world has never been easier. Our insider tips and local
-          insights give you the tools to navigate new places with confidence and
-          excitement. From the moment you start planning to the day you return
-          home, we are dedicated to making your travel experience seamless and
-          enriching.
-        </p>
-        <div class="showcase__btn">
-          <button class="btn">
-            Book A Flight Now
-            <span><i class="ri-arrow-right-line"></i></span>
+          <button type="button" class="swap" id="swap" aria-label="Swap origin and destination">
+            <i class="ri-arrow-left-right-line"></i>
+          </button>
+
+          <div class="field field--route">
+            <label for="to">To</label>
+            <div class="field__box">
+              <i class="ri-flight-land-line"></i>
+              <input id="to" name="to" list="cities" placeholder="Where to?" autocomplete="off" required />
+            </div>
+            <small class="field__err" data-err="to"></small>
+          </div>
+
+          <div class="field">
+            <label for="depart">Depart</label>
+            <div class="field__box">
+              <i class="ri-calendar-event-line"></i>
+              <input id="depart" name="depart" type="date" required />
+            </div>
+            <small class="field__err" data-err="depart"></small>
+          </div>
+
+          <div class="field" id="return-field">
+            <label for="return">Return</label>
+            <div class="field__box">
+              <i class="ri-calendar-check-line"></i>
+              <input id="return" name="return" type="date" />
+            </div>
+            <small class="field__err" data-err="return"></small>
+          </div>
+
+          <div class="field">
+            <label for="travelers">Travelers</label>
+            <div class="field__box field__box--stepper">
+              <i class="ri-group-line"></i>
+              <button type="button" data-step="-1" aria-label="Fewer travelers">−</button>
+              <output id="travelers-out" aria-live="polite">1</output>
+              <button type="button" data-step="1" aria-label="More travelers">+</button>
+              <input id="travelers" name="travelers" type="hidden" value="1" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="cabin">Cabin</label>
+            <div class="field__box">
+              <i class="ri-vip-crown-2-line"></i>
+              <select id="cabin" name="cabin">
+                <option value="1">Economy</option>
+                <option value="1.6">Premium Economy</option>
+                <option value="2.8">Business</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn btn--lg book__submit" type="submit">
+            <i class="ri-search-line"></i> Search flights
           </button>
         </div>
+
+        <datalist id="cities"></datalist>
+      </form>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="section__container destination__container" id="destinations">
+      <div class="section__head">
+        <span class="kicker">Top picks</span>
+        <h2 class="section__header">Popular Destinations</h2>
+        <p class="section__description">
+          Discover the most loved destinations around the globe.
+        </p>
+      </div>
+      <div class="destination__grid">
+        <article class="destination__card" data-reveal>
+          <div class="destination__img">
+            <img src="assets/destination-1.jpg" alt="New York City skyline" loading="lazy" />
+            <span class="destination__price">from ₹55,000</span>
+          </div>
+          <div class="destination__card__details">
+            <div>
+              <h3>Tradition and Futurism</h3>
+              <p><i class="ri-map-pin-line"></i> New York City, USA</p>
+            </div>
+            <div class="destination__rating"><i class="ri-star-fill"></i> 4.7</div>
+          </div>
+          <button class="link-btn" data-dest="New York">
+            Book flights <i class="ri-arrow-right-line"></i>
+          </button>
+        </article>
+        <article class="destination__card" data-reveal>
+          <div class="destination__img">
+            <img src="assets/destination-2.jpg" alt="Eiffel Tower in Paris" loading="lazy" />
+            <span class="destination__price">from ₹42,000</span>
+          </div>
+          <div class="destination__card__details">
+            <div>
+              <h3>The City of Lights</h3>
+              <p><i class="ri-map-pin-line"></i> Paris, France</p>
+            </div>
+            <div class="destination__rating"><i class="ri-star-fill"></i> 4.5</div>
+          </div>
+          <button class="link-btn" data-dest="Paris">
+            Book flights <i class="ri-arrow-right-line"></i>
+          </button>
+        </article>
+        <article class="destination__card" data-reveal>
+          <div class="destination__img">
+            <img src="assets/destination-3.jpg" alt="Temple in Bali" loading="lazy" />
+            <span class="destination__price">from ₹28,000</span>
+          </div>
+          <div class="destination__card__details">
+            <div>
+              <h3>Island of the Gods</h3>
+              <p><i class="ri-map-pin-line"></i> Bali, Indonesia</p>
+            </div>
+            <div class="destination__rating"><i class="ri-star-fill"></i> 4.8</div>
+          </div>
+          <button class="link-btn" data-dest="Bali">
+            Book flights <i class="ri-arrow-right-line"></i>
+          </button>
+        </article>
       </div>
     </section>
 
-    <section class="section__container banner__container">
-      <div class="banner__card">
-        <h4>10+</h4>
+    <!-- JOURNEY -->
+    <section class="section__container journey__container" id="tour">
+      <div class="section__head">
+        <span class="kicker">How it works</span>
+        <h2 class="section__header">Journey To The Sky Made Simple!</h2>
+        <p class="section__description">
+          Effortless planning for your next adventure.
+        </p>
+      </div>
+      <div class="journey__grid">
+        <div class="journey__card" data-reveal>
+          <span class="journey__num">01</span>
+          <span class="journey__icon"><i class="ri-bookmark-3-line"></i></span>
+          <h3>Seamless Booking</h3>
+          <h4>Easy reservations, one click away</h4>
+          <p>
+            From flights and accommodations to activities and transfers,
+            everything you need is at your fingertips, making travel planning
+            effortless.
+          </p>
+        </div>
+        <div class="journey__card" data-reveal>
+          <span class="journey__num">02</span>
+          <span class="journey__icon"><i class="ri-landscape-fill"></i></span>
+          <h3>Tailored Itineraries</h3>
+          <h4>Customized plans just for you</h4>
+          <p>
+            Enjoy personalized travel plans designed around your preferences.
+            Whether you seek adventure or cultural immersion, your journey is
+            uniquely yours.
+          </p>
+        </div>
+        <div class="journey__card" data-reveal>
+          <span class="journey__num">03</span>
+          <span class="journey__icon"><i class="ri-map-2-line"></i></span>
+          <h3>Expert Local Insights</h3>
+          <h4>Insider tips and recommendations</h4>
+          <p>
+            Curated recommendations for dining, sightseeing and hidden gems, so
+            you can experience each destination like a local.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / SHOWCASE -->
+    <section class="section__container showcase__container" id="about">
+      <div class="showcase__image" data-reveal>
+        <img src="assets/showcase.jpg" alt="Child playing happily in the sea" loading="lazy" />
+        <div class="showcase__badge">
+          <i class="ri-heart-3-fill"></i>
+          <div><b>Made for families</b><small>Kid-friendly trips</small></div>
+        </div>
+      </div>
+      <div class="showcase__content" data-reveal>
+        <span class="kicker">About Skywings</span>
+        <h2>Unleash wanderlust with Skywings</h2>
+        <p>
+          Embark on a journey like no other with Skywings, where your travel
+          dreams come to life. We inspire and facilitate your adventures,
+          whether you seek the energy of bustling cityscapes, the serene beauty
+          of pristine beaches, or the history of ancient landmarks.
+        </p>
+        <ul class="checks">
+          <li><i class="ri-checkbox-circle-fill"></i> Expertly curated destinations</li>
+          <li><i class="ri-checkbox-circle-fill"></i> Personalized itineraries for every traveler</li>
+          <li><i class="ri-checkbox-circle-fill"></i> Insider tips and local insights</li>
+          <li><i class="ri-checkbox-circle-fill"></i> Seamless support from planning to return</li>
+        </ul>
+        <a href="#book" class="btn btn--lg btn--sky">
+          Book A Flight Now <i class="ri-arrow-right-line"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="section__container banner__container" aria-label="Skywings in numbers">
+      <div class="banner__card" data-reveal>
+        <h3><span data-count="10" data-suffix="+">10+</span></h3>
         <p>Years Experience</p>
       </div>
-      <div class="banner__card">
-        <h4>12K</h4>
+      <div class="banner__card" data-reveal>
+        <h3><span data-count="12" data-suffix="K">12K</span></h3>
         <p>Happy Clients</p>
       </div>
-      <div class="banner__card">
-        <h4>4.8</h4>
+      <div class="banner__card" data-reveal>
+        <h3><span data-count="4.8" data-decimals="1">4.8</span></h3>
         <p>Overall Ratings</p>
       </div>
     </section>
 
+    <!-- PACKAGES -->
+    <section class="section__container package__container" id="package">
+      <div class="section__head">
+        <span class="kicker">Holiday packages</span>
+        <h2 class="section__header">Pick a trip, we'll handle the rest</h2>
+        <p class="section__description">
+          Flights, hotels and transfers bundled at one clear price (per person).
+        </p>
+      </div>
+      <div class="package__grid">
+        <article class="package__card" data-reveal>
+          <h3>Bali Island Escape</h3>
+          <p class="package__meta">5 nights · 6 days</p>
+          <p class="package__price"><small>from</small> ₹52,999</p>
+          <ul>
+            <li><i class="ri-check-line"></i> Return flights from Delhi</li>
+            <li><i class="ri-check-line"></i> 4★ beach resort stay</li>
+            <li><i class="ri-check-line"></i> Airport transfers &amp; breakfast</li>
+            <li><i class="ri-check-line"></i> Temple &amp; rice-terrace tour</li>
+          </ul>
+          <button class="btn btn--outline" data-dest="Bali">Plan this trip</button>
+        </article>
+        <article class="package__card package__card--featured" data-reveal>
+          <span class="package__tag">Most popular</span>
+          <h3>Paris Classic</h3>
+          <p class="package__meta">6 nights · 7 days</p>
+          <p class="package__price"><small>from</small> ₹89,999</p>
+          <ul>
+            <li><i class="ri-check-line"></i> Return flights from Delhi</li>
+            <li><i class="ri-check-line"></i> Central 4★ hotel stay</li>
+            <li><i class="ri-check-line"></i> Seine cruise &amp; museum passes</li>
+            <li><i class="ri-check-line"></i> Local guide &amp; metro pass</li>
+          </ul>
+          <button class="btn" data-dest="Paris">Plan this trip</button>
+        </article>
+        <article class="package__card" data-reveal>
+          <h3>New York Highlights</h3>
+          <p class="package__meta">5 nights · 6 days</p>
+          <p class="package__price"><small>from</small> ₹1,24,999</p>
+          <ul>
+            <li><i class="ri-check-line"></i> Return flights from Delhi</li>
+            <li><i class="ri-check-line"></i> Manhattan hotel stay</li>
+            <li><i class="ri-check-line"></i> City sightseeing pass</li>
+            <li><i class="ri-check-line"></i> Broadway night, optional</li>
+          </ul>
+          <button class="btn btn--outline" data-dest="New York">Plan this trip</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- DISCOVER -->
     <section class="section__container discover__container">
-      <h2 class="section__header">Discover The World From Above</h2>
-      <p class="section__description">
-        Experience Breathtaking Views and Unique Perspectives
-      </p>
+      <div class="section__head">
+        <span class="kicker">Perspective</span>
+        <h2 class="section__header">Discover The World From Above</h2>
+        <p class="section__description">
+          Experience breathtaking views and unique perspectives.
+        </p>
+      </div>
       <div class="discover__grid">
-        <div class="discover__card">
+        <div class="discover__card" data-reveal>
           <span><i class="ri-camera-lens-line"></i></span>
-          <h4>Aerial Cityscapes</h4>
+          <h3>Aerial Cityscapes</h3>
           <p>
-            Witness the architectural marvels and bustling streets from
-            bird's-eye view, offering a unique perspective.
+            Witness architectural marvels and bustling streets from a bird's-eye
+            view, offering a unique perspective.
           </p>
         </div>
-        <div class="discover__card">
+        <div class="discover__card" data-reveal>
           <span><i class="ri-ship-line"></i></span>
-          <h4>Coastal Wonders</h4>
+          <h3>Coastal Wonders</h3>
           <p>
             Fly over pristine coastlines and turquoise waters, revealing hidden
             coves and vibrant coral reefs.
           </p>
         </div>
-        <div class="discover__card">
+        <div class="discover__card" data-reveal>
           <span><i class="ri-landscape-line"></i></span>
-          <h4>Historic Landmarks</h4>
+          <h3>Historic Landmarks</h3>
           <p>
-            Observe the grandeur of ancient castles and other significant sites
-            in a way that ground tours can't offer.
+            Observe the grandeur of ancient castles and significant sites in a
+            way ground tours can't offer.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section__container client__container">
-      <h2 class="section__header">Loved By Over Thousand Travelers</h2>
-      <p class="section__description">
-        Discover the stories of wanderlust and cherished memories through the
-        eyes of our valued clients.
-      </p>
-      <!-- Slider main container -->
-      <div class="swiper">
-        <!-- Additional required wrapper -->
+    <!-- TESTIMONIALS -->
+    <section class="section__container client__container" id="reviews">
+      <div class="section__head">
+        <span class="kicker">Reviews</span>
+        <h2 class="section__header">Loved By Over Thousand Travelers</h2>
+        <p class="section__description">
+          Stories of wanderlust and cherished memories from our valued clients.
+        </p>
+      </div>
+      <div class="swiper" id="reviews-slider">
         <div class="swiper-wrapper">
-          <!-- Slides -->
           <div class="swiper-slide">
             <div class="client__card">
               <div class="client__content">
-                <div class="client__rating">
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
+                <div class="client__rating" aria-label="5 out of 5 stars">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                 </div>
                 <p>
                   Skywings has completely transformed my travel experience. From
                   finding hidden gems in bustling cities to discovering serene
                   retreats off the beaten path, every detail was thoughtfully
-                  arranged. I can't recommend Skywings enough for anyone looking
-                  to elevate their travel experience!
+                  arranged. I can't recommend Skywings enough!
                 </p>
               </div>
               <div class="client__details">
-                <img src="assets/client-1.jpg" alt="client" />
-                <div>
-                  <h4>John Adams</h4>
-                  <h5>Travel Blogger</h5>
-                </div>
+                <img src="assets/client-1.jpg" alt="John Adams" loading="lazy" />
+                <div><h4>John Adams</h4><h5>Travel Blogger</h5></div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="client__card">
               <div class="client__content">
-                <div class="client__rating">
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
+                <div class="client__rating" aria-label="5 out of 5 stars">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                 </div>
                 <p>
                   My recent adventure with Skywings was nothing short of
-                  spectacular. The personalized itineraries and recommendations
-                  they provided led me to extraordinary locations that I would
-                  never have found on my own. I'm already planning my next
-                  adventure with them!
+                  spectacular. The personalized itineraries led me to
+                  extraordinary locations I would never have found on my own.
+                  I'm already planning my next adventure with them!
                 </p>
               </div>
               <div class="client__details">
-                <img src="assets/client-2.jpg" alt="client" />
-                <div>
-                  <h4>Emily Thompson</h4>
-                  <h5>Adventure Enthusiast</h5>
-                </div>
+                <img src="assets/client-2.jpg" alt="Emily Thompson" loading="lazy" />
+                <div><h4>Emily Thompson</h4><h5>Adventure Enthusiast</h5></div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="client__card">
               <div class="client__content">
-                <div class="client__rating">
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
+                <div class="client__rating" aria-label="5 out of 5 stars">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                 </div>
                 <p>
                   Skywings offered a transformative experience for my research
-                  into historical landmarks. The unique aerial perspectives and
-                  provided a new level of appreciation and insight into the
-                  sites I studied. I highly recommend their services to fellow
-                  historians and cultural enthusiasts.
+                  into historical landmarks. The unique aerial perspectives gave
+                  me a new level of appreciation for the sites I studied. Highly
+                  recommended to fellow historians.
                 </p>
               </div>
               <div class="client__details">
-                <img src="assets/client-3.jpg" alt="client" />
-                <div>
-                  <h4>Sarah Lee</h4>
-                  <h5>Cultural Historian</h5>
-                </div>
+                <img src="assets/client-3.jpg" alt="Sarah Lee" loading="lazy" />
+                <div><h4>Sarah Lee</h4><h5>Cultural Historian</h5></div>
               </div>
             </div>
           </div>
           <div class="swiper-slide">
             <div class="client__card">
               <div class="client__content">
-                <div class="client__rating">
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
-                  <span><i class="ri-star-fill"></i></span>
+                <div class="client__rating" aria-label="5 out of 5 stars">
+                  <i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i><i class="ri-star-fill"></i>
                 </div>
                 <p>
                   Finding a balance between work and travel can be challenging,
                   but Skywings made it effortless. Their efficient planning and
-                  excellent recommendations helped me maximize my downtime and
-                  enjoy every moment of my trip. I look forward to working with
-                  them again on future travels.
+                  excellent recommendations helped me enjoy every moment of my
+                  trip. I look forward to travelling with them again.
                 </p>
               </div>
               <div class="client__details">
-                <img src="assets/client-4.jpg" alt="client" />
-                <div>
-                  <h4>David Patel</h4>
-                  <h5>Business Executive</h5>
-                </div>
+                <img src="assets/client-4.jpg" alt="David Patel" loading="lazy" />
+                <div><h4>David Patel</h4><h5>Business Executive</h5></div>
               </div>
             </div>
           </div>
         </div>
+        <div class="swiper-pagination"></div>
       </div>
     </section>
 
+    <!-- FAQ -->
+    <section class="section__container faq__container" id="faq">
+      <div class="section__head">
+        <span class="kicker">Good to know</span>
+        <h2 class="section__header">Frequently asked questions</h2>
+      </div>
+      <div class="faq__list">
+        <details>
+          <summary>How do I book a trip with Skywings?</summary>
+          <p>Use the “Find your flight” form above, or pick a destination or package. Our team confirms availability and sends you a final quote by email.</p>
+        </details>
+        <details>
+          <summary>Can I change or cancel my booking?</summary>
+          <p>Yes. Most bookings can be changed or cancelled; fees depend on the fare and airline rules, and we'll always show them before you pay.</p>
+        </details>
+        <details>
+          <summary>Do you offer custom itineraries?</summary>
+          <p>Absolutely. Tell us your interests and budget and we'll design a plan around you — from beach breaks to cultural deep-dives.</p>
+        </details>
+        <details>
+          <summary>Is support available during my trip?</summary>
+          <p>Our support team is available 24/7 by phone and email while you travel.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="cta__inner">
+        <h2>Ready for take-off?</h2>
+        <p>Tell us where you want to go — we'll take care of the rest.</p>
+        <a href="#book" class="btn btn--lg btn--white">Start planning <i class="ri-arrow-right-line"></i></a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer id="contact">
       <div class="section__container footer__container">
         <div class="footer__col">
-          <div class="footer__logo">
-            <a href="#" class="logo">Skywings</a>
-          </div>
+          <a href="#home" class="logo"><i class="ri-plane-fill"></i> Skywings</a>
           <p>
             Explore the world with ease and excitement through our comprehensive
             travel platform. Your journey begins here, where seamless planning
             meets unforgettable experiences.
           </p>
           <ul class="footer__socials">
-            <li>
-              <a href="#"><i class="ri-facebook-fill"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="ri-instagram-line"></i></a>
-            </li>
-            <li>
-              <a href="#"><i class="ri-youtube-line"></i></a>
-            </li>
+            <li><a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a></li>
+            <li><a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a></li>
+            <li><a href="#" aria-label="YouTube"><i class="ri-youtube-line"></i></a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Quick Links</h4>
           <ul class="footer__links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Flights</a></li>
-            <li><a href="#">Hotels</a></li>
-            <li><a href="#">Cruise</a></li>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#destinations">Destinations</a></li>
+            <li><a href="#package">Packages</a></li>
+            <li><a href="#faq">FAQ</a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Contact Us</h4>
           <ul class="footer__links">
-            <li>
-              <a href="#">
-                <span><i class="ri-phone-fill"></i></span> +91 9676543210
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span><i class="ri-record-mail-line"></i></span> info@skywings
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <span><i class="ri-map-pin-2-fill"></i></span> Delhi, India
-              </a>
-            </li>
+            <li><a href="tel:+919676543210"><i class="ri-phone-fill"></i> +91 9676543210</a></li>
+            <li><a href="mailto:info@skywings.com"><i class="ri-mail-fill"></i> info@skywings.com</a></li>
+            <li><a href="#contact"><i class="ri-map-pin-2-fill"></i> Delhi, India</a></li>
           </ul>
         </div>
         <div class="footer__col">
           <h4>Subscribe</h4>
-          <form action="/">
-            <input type="text" placeholder="Enter your email" />
-            <button class="btn">Subscribe</button>
+          <p class="footer__note">Travel deals and tips, once a month.</p>
+          <form id="subscribe-form" novalidate>
+            <input type="email" id="sub-email" placeholder="Enter your email" aria-label="Email address" required />
+            <small class="field__err" id="sub-err"></small>
+            <button class="btn" type="submit">Subscribe</button>
           </form>
         </div>
       </div>
       <div class="footer__bar">
-        Copyright © 2026 Web Design Mastery. All rights reserved.
+        © <span id="year">2026</span> Skywings. All rights reserved.
       </div>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
+    <button class="to-top" id="to-top" aria-label="Back to top">
+      <i class="ri-arrow-up-line"></i>
+    </button>
+
+    <!-- RESULT MODAL -->
+    <dialog id="result" aria-labelledby="result-title">
+      <form method="dialog" class="modal__close-wrap">
+        <button class="modal__close" aria-label="Close"><i class="ri-close-line"></i></button>
+      </form>
+      <div class="modal__body">
+        <span class="modal__icon"><i class="ri-plane-line"></i></span>
+        <h3 id="result-title">Your trip estimate</h3>
+        <p class="modal__route" id="result-route"></p>
+        <dl class="modal__list" id="result-list"></dl>
+        <div class="modal__total">
+          <span>Estimated total</span>
+          <strong id="result-total"></strong>
+        </div>
+        <p class="modal__fine">
+          Indicative estimate incl. taxes. Final fare is confirmed by our team.
+        </p>
+        <form id="enquiry-form" novalidate>
+          <input type="email" id="enq-email" placeholder="Your email to receive the quote" aria-label="Your email" required />
+          <small class="field__err" id="enq-err"></small>
+          <button class="btn btn--lg" type="submit">Send me this quote</button>
+        </form>
+      </div>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="main.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
